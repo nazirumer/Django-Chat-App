@@ -1,0 +1,56 @@
+{% load static %}
+{% include 'aso/navbar.html' %}
+
+<style>
+    section{
+        align-content: center;
+        width: 100%;
+    }
+    section .card{
+        width: 100%;
+        padding: 20px;
+        margin-left: 45%;
+    }
+    .this-h{
+        width: 70%;
+        margin: 1% 1% 1% 25%;
+    }
+    .card-title{
+        background-color: rgb(238, 235, 232);
+        border-radius: 5px;
+    }
+    .card-title:hover{
+        background-color: rgb(190, 190, 190);
+    }
+</style>
+    <section>
+        <div class="row">
+            <h5 class="this-h">See what your friend's posts </h5>
+            <div class="col-6 mb-4">
+                {% for post in postpage %}
+                <div class="card">
+                    <div class="card-body">
+                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 50px;" alt="Avatar" />
+                    <h5 class="card-title">{{post.user.username}}</h5>
+                    <p class="card-text">{{post.text}}</p>
+                    <p class="card-text"><small class="text-muted">posted {{post.posted_date}} ago</small></p>
+                    </div>
+                    {% if post.image %}
+                    <img class="card-img-bottom" src="static{{post.image.url}}" alt="Card image cap">
+                    {% endif %}
+                </div>     
+                {% endfor %}      
+            </div>
+            
+        </div>
+    </section>
+
+
+    <!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+></script>
+
+</body>
+</html>
